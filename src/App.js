@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { } from "react-bootstrap";
 import "./Css/materialize.min.css";
 import Header from "./Components/header";
+import Main from "./Components/mainPage";
 
 class App extends Component {
   render() {
     return (
-      <Header className="d" id="header"/>
+      <React.Fragment>
+        <Header className="d" id="header"/>
+        <Main />
+      </React.Fragment>
     );
   }
 }
