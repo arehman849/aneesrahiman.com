@@ -1,6 +1,8 @@
 import React, { Component, createRef } from "react";
 import "../Css/styles.css";
 import "../Css/yellow.css";
+import './animateHeadline';
+import './../Css/animateHeadline.css';
 
 class Home extends Component {
     constructor(props) {
@@ -18,15 +20,15 @@ class Home extends Component {
     }
     render (){
         return (
-            <section id="home" className="active">
+            <section id="Home" className="active">
                 <div className="text-rotator-container">
                     <div className="slider-text slider-triangle">
                         <h1>
                             HI ! i'm 
-                            <span> Anees</span>
+                            <span> Anees </span>
                         </h1>
                         <h2>
-                            I'm a
+                            I'm a &nbsp;
                             <span className="roles">
                                 <b>{this.state.role}</b>
                                 <span></span>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashRouter } from "react-router-dom";
 import { } from "react-bootstrap";
 import "./Css/materialize.min.css";
 import Header from "./Components/header";
@@ -9,7 +10,10 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header className="d" id="header"/>
+        <HashRouter>
         <Main />
+        </HashRouter>
+
       </React.Fragment>
     );
   }

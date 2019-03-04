@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { HashRouter, NavLink as NavigationLink} from "react-router-dom";
 import "../Css/styles.css";
 import "../Css/yellow.css";
 import FaIcon from "./icons";
@@ -7,10 +8,10 @@ import FaIcon from "./icons";
 const GenerateLink = (prop) => {
     return (
         <li onClick={()=>prop.onClickHandler(prop.value)} className={prop.liCls}>
-            <a id={"link-" + prop.value} href={"#" + prop.value}>
+            <NavigationLink id={"link-" + prop.value} to={prop.value}>
                 <FaIcon key={prop.value} value={prop.value} />
                 <span className="mobile-nav font-weight-700" >{prop.value}</span>
-            </a>
+            </NavigationLink>
             <span>
                 {prop.value}
             </span>
@@ -22,13 +23,14 @@ class NavLink extends Component {
     constructor() {
         super();
         this.state = {
-            activeLiId : 'Home'
+            activeLiId : ''
         }
     }
     setClass = (val) => {
         this.setState({activeLiId : val});
     }
     render() {
+        
         let { props } = this;
         const { links } = props;
         const linkItems = links.map((link) => {
@@ -39,12 +41,18 @@ class NavLink extends Component {
         );
         return (
             <div>
-                <ul className="navigation" id="nav">
-                    {linkItems}
-                </ul>
+                <HashRouter>
+                    <ul className="navigation" id="nav">
+                        {linkItems}
+                    </ul>
+                </HashRouter>
+                
             </div>
         );
         
+    }
+    componentDidMount() {
+        this.setClass(document.getElementsByTagName("section")[0].id);
     }
 }
 
