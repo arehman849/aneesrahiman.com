@@ -27,6 +27,10 @@ class NavLink extends Component {
         }
     }
     setClass = (val) => {
+        var nav = document.getElementById("nav");
+        nav.childNodes.forEach(element => {
+            element.className = "";          
+        });
         this.setState({activeLiId : val});
     }
     render() {
@@ -57,4 +61,4 @@ class NavLink extends Component {
 }
 
 
-export default NavLink;
+export default NavLink;   
