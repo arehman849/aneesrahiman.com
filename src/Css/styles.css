@@ -2120,3 +2120,30 @@ ul.social-intro {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
+#roles > b {
+  position: relative;
+  display: inline-block;
+  animation: rolesAnim 1.5s ease-in-out 0s infinite alternate; 
+}
+
+#roles > span {
+  position: absolute;
+  display: inline-block;
+  width: 400px;
+  height: 50px;
+  background-color: #222;
+  animation: rolesAnimBar 1.5s ease-in-out 0s infinite alternate;
+}
+
+@keyframes rolesAnim {
+  0% {transform: translateX(0%)}
+  60% {transform: translateX(0%)}
+  100% {transform: translateX(35%)}
+}
+
+@keyframes rolesAnimBar {
+  0% {transform: translateX(0)}
+  60% {transform: translateX(0%)}
+  100% {transform: translateX(-30%)}
+}
