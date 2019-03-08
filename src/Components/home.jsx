@@ -30,9 +30,9 @@ class Home extends Component {
                             <span> Anees </span>
                         </h1>
                         <h2>
-                            I'm a &nbsp;
-                            <span className="roles">
-                                <b>{this.state.role}</b>
+                            <span id="roles">
+                                <b>I'm a &nbsp;{this.state.role}</b>
+                                <span></span>
                             </span>
                         </h2>
                     </div>
@@ -60,13 +60,23 @@ class Home extends Component {
     }
 
     componentDidMount () {
-        this.roleInterval = setInterval(() => {
+        /*setInterval(() => {
             let role = this.state.roles[this.index];
             this.index = (this.index === this.state.roles.length - 1) ? 0 : this.index + 1; 
             this.setState(() => ({
                 role: role
             }));
-        }, 2000);
+        }, 1000);*/
+        let me = this,
+            iterationCount = 0;
+
+        document.querySelector("#roles > b").addEventListener("animationiteration", function (e) {
+            iterationCount++;
+            if (iterationCount%2 !== 0) {
+                me.index = (me.index === me.state.roles.length - 1) ? 0 : me.index + 1;
+                this.innerText = "I'm a " + me.state.roles[me.index];
+            }
+        }, false);
         document.getElementById("link-Home").parentNode.className = "active";
     }
 
@@ -79,10 +89,10 @@ class Home extends Component {
             }         
         });
     }
-    componentWillUnmount () {
+    /*componentWillUnmount () {
         clearInterval(this.roleInterval);
         this.roleInterval = null;
-    }
+    }*/
 }
 
 
