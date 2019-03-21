@@ -13,6 +13,47 @@ const GenerateList = (prop) => {
     </li>
     )
 }
+
+const GetContent = (props) => {
+    let { value } = props
+    if (value === "skills") {
+        return (
+            <div className="row">
+                <div className="col s6">
+                    {getCol1Values}
+                </div>
+                <div className="col s6">
+                    {getCol2Values}
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            expEduDetails[value].map((dets) => {
+                return (
+                    <React.Fragment key={dets.data1}>
+                        <div className="resume-content" key={value}>
+                            <h6 className="uppercase">
+                                <span>{dets.data1}</span>
+                                {dets.data2}
+                            </h6>
+                            <span className="date">
+                                <FaIcon key="calendar" value="calendar"/> &nbsp;
+                                {dets.data3}
+                            </span>
+                            <p>
+                                {dets.data4}
+                            </p>
+                        </div>
+                        <span className="separator" key="separator"></span>
+                    </React.Fragment>
+                )
+            })
+            
+        )
+    }
+}
+
 class About extends Component {
     render () {
         let personalItems = [],
@@ -49,9 +90,21 @@ class About extends Component {
                     </div>
                     <div className={resumeBodyClass}>
                         <div className="resume-card-body-container">
-
+                            <GetContent key={title} value={title} />
                         </div>
                     </div>
+                </div>
+            )
+        })
+        const generateStatsBadges = statsBadges.map((badge) => {
+            let key = Object.keys(badge)[0];
+            return (
+                <div className="col s12 m4 l4 center-align" key = {key}>
+                    <h3>
+                        <FaIcon key={key} value={key}></FaIcon><br />
+                        <span className="font-weight-900">{badge[key][0]}</span>
+                    </h3>
+                    <h6 className="uppercase font-weight-700">{badge[key][1]}</h6>
                 </div>
             )
         })
@@ -122,6 +175,11 @@ class About extends Component {
                     </div>
                 </div>
             </div>
+            <div className="container badges">
+                <div className="row">
+                    {generateStatsBadges}
+                </div>
+            </div>
         </section>
         )
     }
@@ -129,7 +187,11 @@ class About extends Component {
     componentDidMount () {
         document.getElementById("link-About").parentNode.className = "active";
         document.getElementById("resume-list-item-0").className += " is-active";
+        document.getElementsByClassName("resume-card-0")[0].className += " front";
+        document.getElementsByClassName("resume-card-1")[0].className += " back";
+        document.getElementsByClassName("resume-card-2")[0].className += " back-back";
     }
+
     clickHandler (e) {
         var nav = document.getElementById("nav");
         nav.childNodes.forEach(element => {
@@ -141,12 +203,45 @@ class About extends Component {
     }
 
     setActive (e) {
-        Array.from(document.getElementsByClassName("resume-list-item")).forEach(function(link) {
-            link.className = "resume-list-item"
-            if(link.id === e.currentTarget.id) {
-                link.className = "resume-list-item is-active";
+        // console.log(e.currentTarget.attributes.getNamedItem('data-index').value);
+        let activeLink = 0;
+        Array.from(document.getElementsByClassName("resume-list-item")).forEach((link, index) => {
+            link.className = "resume-list-item";
+            if(link.id === e.currentTarget.id || 
+                e.currentTarget.attributes.getNamedItem('data-index').value === link.attributes.getNamedItem("data-index").value) {
+                activeLink = index;
+                link.className += " is-active";
+                // console.log(resumeCardsTitles);
             }
         });
+
+        Array.from(document.getElementsByClassName("resume-card")).forEach((link, index) => {
+            link.className = "resume-card resume-card-" + index; 
+        })
+
+            switch (activeLink) {
+                case 0:
+                    document.getElementsByClassName("resume-card-0")[0].className += " front";
+                    document.getElementsByClassName("resume-card-1")[0].className += " back";
+                    document.getElementsByClassName("resume-card-2")[0].className += " back-back";
+                    break;
+                case 1:
+                    document.getElementsByClassName("resume-card-0")[0].className += " back-back";
+                    document.getElementsByClassName("resume-card-1")[0].className += " front";
+                    document.getElementsByClassName("resume-card-2")[0].className += " back";
+                    break;
+                case 2:
+                    document.getElementsByClassName("resume-card-0")[0].className += " back";
+                    document.getElementsByClassName("resume-card-1")[0].className += " back-back";
+                    document.getElementsByClassName("resume-card-2")[0].className += " front";
+                    break;
+                default:
+                    document.getElementsByClassName("resume-card-0")[0].className += " front";
+                    document.getElementsByClassName("resume-card-1")[0].className += " back";
+                    document.getElementsByClassName("resume-card-2")[0].className += " back-back";
+                    break;
+            }
+
     }
 }
 
@@ -166,4 +261,94 @@ const personalDetails = {
 }
 
 const resumeCardsTitles = ["experience", "education", "skills"];
+const statsBadges = [{experience:["1+", "Years Experience"] }, {projects: ["6+", "Done Projects"]}, {customers: ["5+", "Happy Customers"]}];
+const expEduDetails = {
+    experience : [
+        {
+            data1 : "NagraVision -",
+            data2 : " Software Trainee",
+            data3: "Nov 2017 - present",
+            data4:"one line explanation"
+        },
+        {
+            data1 : "AM Solutions -",
+            data2 : " Freelancer",
+            data3: "June 2017 - present",
+            data4:"one line explanation"
+        }
+    ],
+    education : [
+        {
+            data1: "MCA - ",
+            data2 : "IGNOU",
+            data3: "Jan 2018 - present",
+            data4: "Computer Science"
+        },
+        {
+            data1: "BCA - ",
+            data2 : "Bangalore University",
+            data3: "May 2014 - June 2017",
+            data4: "Computer Science"
+        }
+        // {
+        //     data1: "PUC - ",
+        //     data2 : "KSEEB",
+        //     data3: "May 2013 - March 2014",
+        //     data4: "Maths, Economics, Business, Accounts"
+        // }
+        
+    ]
+}
+
+const col1Data = {
+    Javascript: 4,
+    Html: 4,
+    PHP: 3.5,
+    Jquery: 4  
+}
+const col2Data = {
+    Javascript: 4,
+    Html: 4,
+    PHP: 3.5,
+    Jquery: 4  
+}
+const getIcon = (val) => {
+    let floorVal = parseInt(val);
+    let starIcons = [];
+    let rem = val - floorVal;
+    for (var i = 1; i <= floorVal; i++) {
+        let key = "star" + i;
+        starIcons.push(<FaIcon key={key} value="star"/>)
+    }
+    if (rem) {
+        starIcons.push(<FaIcon key="halfStar" value="halfStar"/>)
+    }
+    return starIcons;
+}
+let keys = Object.keys(col1Data),
+    keys2 = Object.keys(col2Data);
+const getCol1Values = keys.map((key)=> {
+    return (
+        <div className="resume-content" key={key}>
+            <h6 className="uppercase">
+                {key}
+            </h6>
+            <p>
+                {getIcon(col1Data[key])}
+            </p>
+        </div>
+    )
+})
+const getCol2Values = keys2.map((key)=> {
+    return (
+        <div className="resume-content" key={key}>
+            <h6 className="uppercase">
+                {key}
+            </h6>
+            <p>
+                {getIcon(col1Data[key])}
+            </p>
+        </div>
+    )
+})
 export default About;

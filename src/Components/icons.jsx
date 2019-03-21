@@ -1,11 +1,11 @@
 import React from "react";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faGraduationCap, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
 // import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faFilePdf, faGraduationCap, faStar);
+library.add(faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faFilePdf, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart);
 
 const FaIcon = (prop) => {
     return (
@@ -39,7 +39,20 @@ const getIcon = (item) => {
             icon = "graduation-cap"
             break;
         case "skills":
+        case "star":
             icon = "star"
+            break;
+        case "halfStar":
+            icon = "star-half"
+            break;
+        case "calendar":
+            icon = "calendar"
+            break;
+        case "projects":
+            icon = "handshake"
+            break;
+        case "customers":
+            icon = "heart"
             break;
         default:
             break;
