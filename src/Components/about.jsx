@@ -203,7 +203,6 @@ class About extends Component {
     }
 
     setActive (e) {
-        // console.log(e.currentTarget.attributes.getNamedItem('data-index').value);
         let activeLink = 0;
         Array.from(document.getElementsByClassName("resume-list-item")).forEach((link, index) => {
             link.className = "resume-list-item";
@@ -211,7 +210,6 @@ class About extends Component {
                 e.currentTarget.attributes.getNamedItem('data-index').value === link.attributes.getNamedItem("data-index").value) {
                 activeLink = index;
                 link.className += " is-active";
-                // console.log(resumeCardsTitles);
             }
         });
 

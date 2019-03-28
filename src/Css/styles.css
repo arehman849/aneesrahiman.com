@@ -9,6 +9,7 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-family: "palatino linotype", palatino, serif !important;
 }
 
 *,
@@ -1691,7 +1692,7 @@ ul.social-intro {
 }
 
 .contact-container .contact .rightside form .output_message.success:before {
-  font-family: FontAwesome;
+  /* font-family: FontAwesome; */
   content: "\f14a";
   padding-right: 10px;
 }
@@ -1701,7 +1702,7 @@ ul.social-intro {
 }
 
 .contact-container .contact .rightside form .output_message.error:before {
-  font-family: FontAwesome;
+  /* font-family: FontAwesome; */
   content: "\f071";
   padding-right: 10px;
 }

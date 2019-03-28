@@ -24,7 +24,6 @@ jQuery(document).ready(function($){
 	}
 
 	function animateHeadline($headlines) {
-        console.log($headlines);
 		var duration = animationDelay;
 		$headlines.each(function(){
 			var headline = $(this);

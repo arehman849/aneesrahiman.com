@@ -1,11 +1,11 @@
 import React from "react";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart, faPhone, faAddressCard, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
-// import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faSkype, faStackOverflow, faGoogle, faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faFilePdf, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart);
+library.add(faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faFilePdf, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart, faPhone, faGithub, faLinkedin, faSkype, faStackOverflow, faAddressCard, faGoogle, faFacebook, faTwitter, faPaperPlane);
 
 const FaIcon = (prop) => {
     return (
@@ -20,6 +20,7 @@ const getIcon = (item) => {
             icon = "home"
             break;
         case "About":
+        case "name":
             icon = "user"
             break;
         case "Work":
@@ -27,6 +28,7 @@ const getIcon = (item) => {
             icon = "briefcase"
             break;
         case "Blog":
+        case "comment":
             icon = "comment"
             break;
         case "Contact":
@@ -54,10 +56,39 @@ const getIcon = (item) => {
         case "customers":
             icon = "heart"
             break;
+        case "phone":
+            icon = "phone"
+            break;
+        case "email":
+            icon = "address-card"
+            break;
+        case "skype":
+            icon = {prefix: 'fab', iconName: 'skype'}
+            break;
+        case "google":
+            icon = {prefix: 'fab', iconName: 'google'}
+            break; 
+        case "gitHub":
+            icon = {prefix: 'fab', iconName: 'github'}
+            break; 
+        case "stackoverflow":
+            icon = {prefix: 'fab', iconName: 'stack-overflow'}
+            break; 
+        case "facebook":
+            icon = {prefix: 'fab', iconName: 'facebook'}
+            break; 
+        case "linkedIn":
+            icon = {prefix: 'fab', iconName: 'linkedin'}
+            break; 
+        case "twitter":
+            icon = {prefix: 'fab', iconName: 'twitter'}
+            break;
+        case "send":
+            icon = 'paper-plane'
+            break;
         default:
             break;
     }
     return icon;
 }
-
 export default FaIcon;
