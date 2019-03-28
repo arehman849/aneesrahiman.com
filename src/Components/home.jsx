@@ -45,9 +45,9 @@ class Home extends Component {
                                 </NavigationLink>
                             </li>
                             <li onClick={this.clickHandler}>
-                                <NavigationLink  to="Work" id="link-Work" className="btn btn-secondary link-work">
-                                    <FaIcon key="Work" value="Work"/>
-                                    &nbsp;My Portfolio
+                                <NavigationLink  to="Contact" id="link-Contact" className="btn btn-secondary link-work">
+                                    <FaIcon key="Contact" value="Contact"/>
+                                    &nbsp;Contact
                                 </NavigationLink>
                             </li>
                         </ul>

@@ -151,9 +151,9 @@ class About extends Component {
                                         <FaIcon key="Resume" value="Resume" /> &nbsp;
                                         My Resume
                                     </NavigationLink>
-                                    <NavigationLink to="Blog" id="link-Blog" onClick={this.clickHandler} className="btn btn-secondary font-weight-700">
-                                        <FaIcon key="Blog" value="Blog" /> &nbsp;
-                                        My Blog
+                                    <NavigationLink to="Contact" id="link-Contact" onClick={this.clickHandler} className="btn btn-secondary font-weight-700">
+                                        <FaIcon key="Contact" value="Contact" /> &nbsp;
+                                        Contact
                                     </NavigationLink>
                                 </div>
                             </HashRouter>

@@ -16,5 +16,5 @@ class Header extends Component {
   }
 }
 
-const links = ["Home", "About", "Work", "Contact"];
+const links = ["Home", "About", "Contact"];
 export default Header;
