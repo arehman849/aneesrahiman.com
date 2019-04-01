@@ -1,11 +1,11 @@
 import React from "react";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart, faPhone, faAddressCard, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
+import { faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faGraduationCap, faStar, faCalendar, faStarHalf, faStarHalfAlt, faHandshake, faHeart, faPhone, faAddressCard, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf, faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons";
 import { faGithub, faLinkedin, faSkype, faStackOverflow, faGoogle, faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faFilePdf, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart, faPhone, faGithub, faLinkedin, faSkype, faStackOverflow, faAddressCard, faGoogle, faFacebook, faTwitter, faPaperPlane);
+library.add(faStarHalfAlt, faStarEmpty, faHome, faUser, faBriefcase, faComment, faEnvelopeOpen, faFilePdf, faGraduationCap, faStar, faCalendar, faStarHalf, faHandshake, faHeart, faPhone, faGithub, faLinkedin, faSkype, faStackOverflow, faAddressCard, faGoogle, faFacebook, faTwitter, faPaperPlane);
 
 const FaIcon = (prop) => {
     return (
@@ -46,6 +46,12 @@ const getIcon = (item) => {
             break;
         case "halfStar":
             icon = "star-half"
+            break;
+        case "emptyStar": 
+            icon = {prefix: 'far', iconName: 'star'}
+            break;
+        case "halfEmptyStar":
+            icon = "star-half-alt"
             break;
         case "calendar":
             icon = "calendar"

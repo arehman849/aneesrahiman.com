@@ -132,7 +132,7 @@ class About extends Component {
                             Personal Info
                         </h6>
                         <div className="col m12 l12 xl9 p-none">
-                            <p>about my self (self introduction)</p>
+                            <p>I'm a Javascript developer based in India. A passionate Coder always yearning to explore new ways of solving something programatically</p>
                         </div>
                         <div className="col s12 m12 l6 p-none">
                             <ul className="list-1">
@@ -245,16 +245,18 @@ class About extends Component {
 
 const personalDetails = {
     personal: {
-        firstName : "Anees Ur Rahiman",
-        lastName : "Syed",
-        DOB : "14 Aug",
+        "First Name" : "Anees Ur Rahiman",
+        "Last Name" : "Syed",
+        "Date of birth" : "14 Aug",
         Nationality: "Indian",
+        Freelance: "Available"
     },
     personal2: {
         Phone: "+91 8553142373",
-        address: "#26 RT Nagar, Bangalore",
+        Address: "#26 RT Nagar, Bangalore",
         Email: "me@aneesrehman.com",
-        Languages: "English, Hindi, Kannada"
+        Languages: "English, Hindi, Kannada",
+        Skype: "arehman849_1"
     }
 }
 
@@ -266,13 +268,13 @@ const expEduDetails = {
             data1 : "NagraVision -",
             data2 : " Software Trainee",
             data3: "Nov 2017 - present",
-            data4:"one line explanation"
+            data4: "Develop UI solutions for Set Top Box Environment"
         },
         {
             data1 : "AM Solutions -",
             data2 : " Freelancer",
             data3: "June 2017 - present",
-            data4:"one line explanation"
+            data4:"Working as freelancer and developed few website based on the customer requirements"
         }
     ],
     education : [
@@ -299,16 +301,18 @@ const expEduDetails = {
 }
 
 const col1Data = {
-    Javascript: 4,
+    Javascript: 4.5,
     Html: 4,
-    PHP: 3.5,
-    Jquery: 4  
+    Jquery: 4,
+    Css: 3.5,
+    React: 5      
 }
 const col2Data = {
-    Javascript: 4,
-    Html: 4,
-    PHP: 3.5,
-    Jquery: 4  
+    PHP: 4,
+    Node: 4,
+    Express: 4,
+    Mongo: 4,
+    Mysql: 5
 }
 const getIcon = (val) => {
     let floorVal = parseInt(val);
@@ -319,7 +323,12 @@ const getIcon = (val) => {
         starIcons.push(<FaIcon key={key} value="star"/>)
     }
     if (rem) {
-        starIcons.push(<FaIcon key="halfStar" value="halfStar"/>)
+        starIcons.push(<FaIcon key="halfEmptyStar" value="halfEmptyStar"/>)
+    }
+    let a = Math.ceil(val)
+    while ( a < 5) {
+        a++;
+        starIcons.push(<FaIcon key="emptyStar" value="emptyStar"/>)
     }
     return starIcons;
 }
@@ -344,7 +353,7 @@ const getCol2Values = keys2.map((key)=> {
                 {key}
             </h6>
             <p>
-                {getIcon(col1Data[key])}
+                {getIcon(col2Data[key])}
             </p>
         </div>
     )
